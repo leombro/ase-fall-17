@@ -2,13 +2,6 @@ package calculator;
 
 public class CalculatorPrototype implements CalculatorIF {
 
-    /**
-     *
-     * @param m the first addend
-     * @param n the second addend
-     * @return
-     */
-
     @Override
     public int sum(int m, int n) {
 

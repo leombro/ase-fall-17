@@ -1,3 +1,8 @@
+/*
+ * Advanced Software Engineering - Homework 0
+ * Author: Orlando Leombruni - https://github.com/leombro/ase-fall-17
+ */
+
 package calculator;
 
 import static org.junit.Assert.assertEquals;

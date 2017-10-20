@@ -1,4 +1,4 @@
-package com.leombro.toydoodle;
+package di.unipi.ase.doodle;
 
 public class Vote {
     private String name;

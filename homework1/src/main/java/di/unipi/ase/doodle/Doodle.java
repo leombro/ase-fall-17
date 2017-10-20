@@ -1,4 +1,4 @@
-package com.leombro.toydoodle;
+package di.unipi.ase.doodle;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

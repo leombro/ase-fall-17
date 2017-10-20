@@ -1,0 +1,497 @@
+{
+	"info": {
+		"name": "ASE1",
+		"_postman_id": "bb355abf-d19d-e8ba-7694-f9ecdadc2c06",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "(1) /doodles: correct PUT",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"friday-meeting\",\n\t\"options\": [\n\t\t\t\"morning\",\n\t\t\t\"lunchtime\",\n\t\t\t\"afternoon\"\n\t\t]\n}"
+				},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						""
+					]
+				},
+				"description": "Creates a new Doodle.\n\n(The JSON is well formatted and parses to a valid `Doodle` object.)"
+			},
+			"response": []
+		},
+		{
+			"name": "(2) /doodles: wrong PUT",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"sunday-meeting\"\n}"
+				},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						""
+					]
+				},
+				"description": "Tries to create a new Doodle without options, and fails."
+			},
+			"response": []
+		},
+		{
+			"name": "(3) /doodles: correct PUT with unnecessary fields",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"saturday-dinner\",\n\t\"options\": [\n\t\t\t\"pizza\",\n\t\t\t\"sushi\",\n\t\t\t\"kebab\"\n\t\t],\n\t\"transportation\": [\n\t\t\t\"gino's car\",\n\t\t\t\"bus\",\n\t\t\t\"taxi\"\n\t\t]\n}"
+				},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						""
+					]
+				},
+				"description": "Creates a new Doodle.\n\n(The JSON is well formatted but it contains fields other than `\"title\"` and `\"options\"`. It still parses to a valid Doodle object.)"
+			},
+			"response": []
+		},
+		{
+			"name": "(4) /doodles: GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						""
+					]
+				},
+				"description": "Retrieve all opened Doodles."
+			},
+			"response": []
+		},
+		{
+			"name": "(5) /doodles/{id}: GET (existing Doodle)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/0",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"0"
+					]
+				},
+				"description": "Retrieves the Doodle identified by `id`.\n\nThe Doodle is amongst those currently opened."
+			},
+			"response": []
+		},
+		{
+			"name": "(6) /doodles/{id}: GET (non-existing Doodle)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/17",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"17"
+					]
+				},
+				"description": "Retrieves the Doodle identified by `id`.\n\nThe Doodle is **NOT** amongst those currently opened."
+			},
+			"response": []
+		},
+		{
+			"name": "(7) /doodles/{id}: DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/0",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"0"
+					]
+				},
+				"description": "Deletes the Doodle identified by `id`."
+			},
+			"response": []
+		},
+		{
+			"name": "(8) /doodles/{id}/vote: correct PUT, new vote",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"homer\",\n\t\"option\": \"pizza\"\n}"
+				},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/1/vote",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"1",
+						"vote"
+					]
+				},
+				"description": "Creates a new vote in the Doodle identified by `id`.\n\nThe JSON body request parses into a correct `Vote` object and `id` refers to an existing Doodle."
+			},
+			"response": []
+		},
+		{
+			"name": "(9) /doodles/{id}/vote: wrong PUT",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"option\": \"kebab\"\n}"
+				},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/0/vote",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"0",
+						"vote"
+					]
+				},
+				"description": "Creates a new vote in the Doodle identified by `id`.\n\nThe JSON body request **does NOT** parse into a correct `Vote`; the `\"name\"` field is missing."
+			},
+			"response": []
+		},
+		{
+			"name": "(10) /doodles/{id}/vote: correct PUT (new vote) with unnecessary fields",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"ralph\",\n\t\"option\": \"sushi\",\n\t\"failed-english\": \"unpossible\"\n}"
+				},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/1/vote",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"1",
+						"vote"
+					]
+				},
+				"description": "Creates a new vote in the Doodle identified by `id`.\n\nThe `id` refers to an existing Doodle. The JSON body request contains unnecessary fields, but still parses into a correct `Vote` object."
+			},
+			"response": []
+		},
+		{
+			"name": "(11) /doodles/{id}/vote: formally correct PUT, but user has already voted",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"homer\",\n\t\"option\": \"kebab\"\n}"
+				},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/1/vote",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"1",
+						"vote"
+					]
+				},
+				"description": "Creates a new vote in the Doodle identified by `id`.\n\nThe `id` refers to an existing Doodle. The JSON body request correctly parses into a correct `Vote` object, but the user has already voted once in this Doodle."
+			},
+			"response": []
+		},
+		{
+			"name": "(12) /doodles/{id}/vote/{name}: GET (existing vote)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/1/vote/ralph",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"1",
+						"vote",
+						"ralph"
+					]
+				},
+				"description": "Retrieves the vote casted by user `name` in the Doodle identified by `id`.\n\nUser `name` has already casted their vote in this Doodle."
+			},
+			"response": []
+		},
+		{
+			"name": "(13) /doodles/{id}/vote/{name}: GET (non-existing vote)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/1/vote/quimby",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"1",
+						"vote",
+						"quimby"
+					]
+				},
+				"description": "Retrieves the vote casted by user `name` in the Doodle identified by `id`.\n\nUser `name` **has NOT** casted their vote in this Doodle."
+			},
+			"response": []
+		},
+		{
+			"name": "(14) /doodles/{id}/vote/{name}: DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/1/vote/ralph",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"1",
+						"vote",
+						"ralph"
+					]
+				},
+				"description": "Deletes the vote casted by user `name` in the Doodle identified by `id`.\n\nFor simplicity, `id` refers to an existing Doodle and `name` has already voted in it."
+			},
+			"response": []
+		},
+		{
+			"name": "(15) /doodles/{id}/vote/{name}: POST valid update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"homer\",\n\t\"option\": \"kebab\"\n}"
+				},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/1/vote/homer",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"1",
+						"vote",
+						"homer"
+					]
+				},
+				"description": "Changes the vote casted by user `name` in the Doodle identified by `id`.\n\n`id` refers to an existing Doodle and `name` has already voted in it; the `Vote` object refers to the same user as the one in the URI."
+			},
+			"response": []
+		},
+		{
+			"name": "(16) /doodles/{id}/vote/{name}: POST with wrong user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"quimby\",\n\t\"option\": \"kebab\"\n}"
+				},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/1/vote/homer",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"1",
+						"vote",
+						"homer"
+					]
+				},
+				"description": "Changes the vote casted by user `name` in the Doodle identified by `id`.\n\n`id` refers to an existing Doodle and `name` has already voted in it, but the `Vote` object **DOES NOT** refer to the same user as the one in the URI."
+			},
+			"response": []
+		},
+		{
+			"name": "(17) /doodles/{id}/vote/{name}: POST new vote",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"quimby\",\n\t\"option\": \"kebab\"\n}"
+				},
+				"url": {
+					"raw": "https://leombro-ase-lab-17-hw1.herokuapp.com/doodles/1/vote/quimby",
+					"protocol": "https",
+					"host": [
+						"leombro-ase-lab-17-hw1",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"doodles",
+						"1",
+						"vote",
+						"quimby"
+					]
+				},
+				"description": "Changes the vote casted by user `name` in the Doodle identified by `id`.\n\n`id` refers to an existing Doodle, the `Vote` object refers to the same user as the one in the URI, but user `name` has **NOT** casted their vote yet."
+			},
+			"response": []
+		}
+	]
+}

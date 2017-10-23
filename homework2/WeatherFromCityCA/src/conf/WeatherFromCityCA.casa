@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<casa xmlns="http://java.sun.com/xml/ns/casa" xmlns:ns1="http://j2ee.netbeans.org/wsdl/WeatherFromCity/src/client_WSDL" xmlns:ns2="http://j2ee.netbeans.org/wsdl/WeatherFromCity/src/OWM_WSDL" xmlns:ns3="http://ws.cdyne.com/" xmlns:ns4="http://enterprise.netbeans.org/bpel/WeatherFromCity/weatherFromCity" xmlns:xlink="http://www.w3.org/2000/xlink">
+    <endpoints>
+        <endpoint endpoint-name="client_WSDLPort" interface-name="ns1:client_WSDLPortType" name="endpoint1" service-name="ns1:client_WSDLService"/>
+        <endpoint endpoint-name="RestOutboundWSDL_OutboundPort" interface-name="ns2:RestOutboundPortType" name="endpoint2" service-name="ns2:RestOutboundService"/>
+        <endpoint endpoint-name="IP2GeoSoap12" interface-name="ns3:IP2GeoSoap" name="endpoint3" service-name="ns3:IP2Geo"/>
+        <endpoint display-name="Client" endpoint-name="client_WSDLPortTypeRole_myRole" file-path="weatherFromCity.bpel" interface-name="ns1:client_WSDLPortType" name="endpoint4" process-name="weatherFromCity" service-name="ns4:Client"/>
+        <endpoint display-name="IP2Geo" endpoint-name="IP2GeoSoapRole_partnerRole" file-path="weatherFromCity.bpel" interface-name="ns3:IP2GeoSoap" name="endpoint5" process-name="weatherFromCity" service-name="ns4:IP2Geo"/>
+        <endpoint display-name="OpenWeatherMap" endpoint-name="RestOutboundPortTypeRole_partnerRole" file-path="weatherFromCity.bpel" interface-name="ns2:RestOutboundPortType" name="endpoint6" process-name="weatherFromCity" service-name="ns4:OpenWeatherMap"/>
+    </endpoints>
+    <service-units>
+        <service-engine-service-unit artifacts-zip="WeatherFromCity.jar" component-name="sun-bpel-engine" defined="true" description="Represents this Service Unit" internal="true" name="WeatherFromCityCA-WeatherFromCity" unit-name="WeatherFromCity" unknown="false" x="138" y="97">
+            <provides endpoint="endpoint4"/>
+            <consumes endpoint="endpoint5"/>
+            <consumes endpoint="endpoint6"/>
+        </service-engine-service-unit>
+        <binding-component-service-unit artifacts-zip="sun-http-binding.jar" component-name="sun-http-binding" description="Represents this Service Unit" name="WeatherFromCityCA-sun-http-binding" unit-name="sun-http-binding">
+            <ports>
+                <port x="67" y="208">
+                    <link xlink:href="../jbiServiceUnits/WeatherFromCity/client_WSDL.wsdl#xpointer(/definitions/service[@name='client_WSDLService']/port[@name='client_WSDLPort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint1"/>
+                    <provides endpoint="endpoint1"/>
+                </port>
+                <port bindingType="soap12" x="67" y="37">
+                    <link xlink:href="../jbiServiceUnits/WeatherFromCity/ws.cdyne.com/ip2geo/ip2geo.asmx.wsdl#xpointer(/definitions/service[@name='IP2Geo']/port[@name='IP2GeoSoap12'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint3"/>
+                    <provides endpoint="endpoint3"/>
+                </port>
+            </ports>
+        </binding-component-service-unit>
+        <binding-component-service-unit artifacts-zip="sun-rest-binding.jar" component-name="sun-rest-binding" description="Represents this Service Unit" name="WeatherFromCityCA-sun-rest-binding" unit-name="sun-rest-binding">
+            <ports>
+                <port x="67" y="131">
+                    <link xlink:href="../jbiServiceUnits/WeatherFromCity/OWM_WSDL.wsdl#xpointer(/definitions/service[@name='RestOutboundService']/port[@name='RestOutboundWSDL_OutboundPort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint2"/>
+                    <provides endpoint="endpoint2"/>
+                </port>
+            </ports>
+        </binding-component-service-unit>
+    </service-units>
+    <connections>
+        <connection consumer="endpoint1" provider="endpoint4" state="unchanged"/>
+        <connection consumer="endpoint6" provider="endpoint2" state="unchanged"/>
+        <connection consumer="endpoint5" provider="endpoint3" state="new"/>
+    </connections>
+    <porttypes>
+        <link xlink:href="../jbiServiceUnits/WeatherFromCity/OWM_WSDL.wsdl#xpointer(/definitions/portType[@name='RestOutboundPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/WeatherFromCity/client_WSDL.wsdl#xpointer(/definitions/portType[@name='client_WSDLPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/WeatherFromCity/ws.cdyne.com/ip2geo/ip2geo.asmx.wsdl#xpointer(/definitions/portType[@name='IP2GeoSoap'])" xlink:type="simple"/>
+    </porttypes>
+    <bindings>
+        <link xlink:href="../jbiServiceUnits/WeatherFromCity/OWM_WSDL.wsdl#xpointer(/definitions/binding[@name='RestOutboundBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/WeatherFromCity/client_WSDL.wsdl#xpointer(/definitions/binding[@name='client_WSDLBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/WeatherFromCity/ws.cdyne.com/ip2geo/ip2geo.asmx.wsdl#xpointer(/definitions/binding[@name='IP2GeoSoap'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/WeatherFromCity/ws.cdyne.com/ip2geo/ip2geo.asmx.wsdl#xpointer(/definitions/binding[@name='IP2GeoSoap12'])" xlink:type="simple"/>
+    </bindings>
+    <services>
+        <link xlink:href="../jbiServiceUnits/WeatherFromCity/OWM_WSDL.wsdl#xpointer(/definitions/service[@name='RestOutboundService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/WeatherFromCity/client_WSDL.wsdl#xpointer(/definitions/service[@name='client_WSDLService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/WeatherFromCity/ws.cdyne.com/ip2geo/ip2geo.asmx.wsdl#xpointer(/definitions/service[@name='IP2Geo'])" xlink:type="simple"/>
+    </services>
+    <regions>
+        <region name="WSDL Endpoints" width="150"/>
+        <region name="JBI Modules" width="500"/>
+        <region name="External Modules" width="200"/>
+    </regions>
+</casa>

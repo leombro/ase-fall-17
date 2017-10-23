@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:ns1="http://j2ee.netbeans.org/wsdl/WeatherFromCity/src/client_WSDL" xmlns:ns2="http://enterprise.netbeans.org/bpel/WeatherFromCity/weatherFromCity" xmlns:ns3="http://j2ee.netbeans.org/wsdl/WeatherFromCity/src/OWM_WSDL" xmlns:ns4="http://ws.cdyne.com/" version="1.0">
+    <services binding-component="true">
+        <provides endpoint-name="RestOutboundWSDL_OutboundPort" interface-name="ns3:RestOutboundPortType" service-name="ns3:RestOutboundService"/>
+    </services>
+</jbi>

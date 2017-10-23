@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:ns1="http://j2ee.netbeans.org/wsdl/WeatherFromCity/src/client_WSDL" xmlns:ns2="http://enterprise.netbeans.org/bpel/WeatherFromCity/weatherFromCity" xmlns:ns3="http://j2ee.netbeans.org/wsdl/WeatherFromCity/src/OWM_WSDL" xmlns:ns4="http://ws.cdyne.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/jbi ./jbi.xsd">
+    <service-assembly>
+        <identification>
+            <name>WeatherFromCityCA</name>
+            <description>Represents the Service Assembly of WeatherFromCityCA</description>
+        </identification>
+        <service-unit>
+            <identification>
+                <name>WeatherFromCityCA-WeatherFromCity</name>
+                <description>Represents this Service Unit</description>
+            </identification>
+            <target>
+                <artifacts-zip>WeatherFromCity.jar</artifacts-zip>
+                <component-name>sun-bpel-engine</component-name>
+            </target>
+        </service-unit>
+        <service-unit>
+            <identification>
+                <name>WeatherFromCityCA-sun-http-binding</name>
+                <description>Represents this Service Unit</description>
+            </identification>
+            <target>
+                <artifacts-zip>sun-http-binding.jar</artifacts-zip>
+                <component-name>sun-http-binding</component-name>
+            </target>
+        </service-unit>
+        <service-unit>
+            <identification>
+                <name>WeatherFromCityCA-sun-rest-binding</name>
+                <description>Represents this Service Unit</description>
+            </identification>
+            <target>
+                <artifacts-zip>sun-rest-binding.jar</artifacts-zip>
+                <component-name>sun-rest-binding</component-name>
+            </target>
+        </service-unit>
+        <connections>
+            <connection>
+                <consumer endpoint-name="client_WSDLPort" service-name="ns1:client_WSDLService"/>
+                <provider endpoint-name="client_WSDLPortTypeRole_myRole" service-name="ns2:Client"/>
+            </connection>
+            <connection>
+                <consumer endpoint-name="RestOutboundPortTypeRole_partnerRole" service-name="ns2:OpenWeatherMap"/>
+                <provider endpoint-name="RestOutboundWSDL_OutboundPort" service-name="ns3:RestOutboundService"/>
+            </connection>
+            <connection>
+                <consumer endpoint-name="IP2GeoSoapRole_partnerRole" service-name="ns2:IP2Geo"/>
+                <provider endpoint-name="IP2GeoSoap12" service-name="ns4:IP2Geo"/>
+            </connection>
+        </connections>
+    </service-assembly>
+</jbi>

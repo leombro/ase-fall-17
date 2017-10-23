@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="host-131-114-214-14.m.unipi.it" name="org.netbeans.modules.compapp.catd.ConfiguredTest" tests="1" time="3.77" timestamp="2017-10-23T16:45:48">
+<testsuite errors="0" failures="0" hostname="Orlandos-MBP.homenet.telecomitalia.it" name="org.netbeans.modules.compapp.catd.ConfiguredTest" tests="1" time="6.145" timestamp="2017-10-23T20:32:42">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="US" />
@@ -56,7 +56,7 @@
     <property name="libs.jsf12.javadoc" value="/Applications/OpenESB-v2.3.1/netbeans.app/Contents/Resources/netbeans/enterprise/docs/javaee-doc-api.jar" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner org.netbeans.modules.compapp.catd.ConfiguredTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/oleombruni/ASE_Lab/WeatherFromCityCA/test/results/TEST-org.netbeans.modules.compapp.catd.ConfiguredTest.xml crashfile=/var/folders/t0/yqn3dvwj62q43wj9vd6jqbx00000gn/T/junitvmwatcher6524055084588767911.properties propsfile=/var/folders/t0/yqn3dvwj62q43wj9vd6jqbx00000gn/T/junit7293424023504507003.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner org.netbeans.modules.compapp.catd.ConfiguredTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/oleombruni/ASE_Lab/WeatherFromCityCA/test/results/TEST-org.netbeans.modules.compapp.catd.ConfiguredTest.xml crashfile=/var/folders/t0/yqn3dvwj62q43wj9vd6jqbx00000gn/T/junitvmwatcher3845281620737644776.properties propsfile=/var/folders/t0/yqn3dvwj62q43wj9vd6jqbx00000gn/T/junit2015069650903189101.properties" />
     <property name="build.classes.dir" value="build/jar" />
     <property name="enterprise.module.install.dir" value="/Applications/OpenESB-v2.3.1/netbeans.app/Contents/Resources/netbeans/enterprise/modules" />
     <property name="libs.javaee-endorsed-api-7.0.javadoc" value="/Applications/OpenESB-v2.3.1/netbeans.app/Contents/Resources/netbeans/enterprise/docs/javaee-doc-api.jar" />
@@ -129,7 +129,7 @@
     <property name="libs.eclipselink.maven-pom" value="" />
     <property name="libs.primefaces.javadoc" value="" />
     <property name="libs.spring-framework300.maven-pom" value="" />
-    <property name="ant.project.invoked-targets" value="test-single" />
+    <property name="ant.project.invoked-targets" value="test" />
     <property name="libs.Encoder-Framework.classpath" value="/Applications/OpenESB-v2.3.1/netbeans.app/Contents/Resources/netbeans/soa/modules/ext/encoderframework.jar:/Applications/OpenESB-v2.3.1/netbeans.app/Contents/Resources/netbeans/soa/modules/ext/encoderfrmwk-xsdextension.jar:/Applications/OpenESB-v2.3.1/netbeans.app/Contents/Resources/netbeans/soa/modules/ext/xbean.jar" />
     <property name="libs.swing-layout.javadoc" value="/Applications/OpenESB-v2.3.1/netbeans.app/Contents/Resources/netbeans/platform/docs/swing-layout-1.0.4-doc.zip" />
     <property name="sun.java2d.d3d" value="false" />
@@ -272,7 +272,6 @@
     <property name="libs.primefaces.src" value="" />
     <property name="dist.dir" value="dist" />
     <property name="org.netbeans.modules.compapp.catd.context" value="" />
-    <property name="inDebug" value="${inDebug}" />
     <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob" />
     <property name="default.javac.source" value="1.7" />
     <property name="libs.MySQLDriver.src" value="" />
@@ -336,7 +335,7 @@
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="/Applications/OpenESB-v2.3.1/netbeans.app/Contents/Resources/netbeans/enterprise/docs/javaee-doc-api.jar" />
   </properties>
-  <testcase classname="org.netbeans.modules.compapp.catd.ConfiguredTest" name="TestPisa" time="3.742" />
+  <testcase classname="org.netbeans.modules.compapp.catd.ConfiguredTest" name="TestPisa" time="6.104" />
   <system-out><![CDATA[GenerateATSOutput=${generate.ats.output}
 NetBeansUserDir=/Users/oleombruni/Library/Application Support/OpenESB_IDE/2.3.1
 ServerPassword=adminadmin
@@ -347,7 +346,6 @@ file.separator=/
 ftp.nonProxyHosts=local|*.local|169.254/16|*.169.254/16
 gopherProxySet=false
 http.nonProxyHosts=local|*.local|169.254/16|*.169.254/16
-inDebug=${inDebug}
 java.awt.graphicsenv=sun.awt.CGraphicsEnvironment
 java.awt.headless=${java.awt.headless}
 java.awt.printerjob=sun.lwawt.macosx.CPrinterJob
@@ -388,7 +386,7 @@ sun.boot.library.path=/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents
 sun.cpu.endian=little
 sun.cpu.isalist=
 sun.io.unicode.encoding=UnicodeBig
-sun.java.command=org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner org.netbeans.modules.compapp.catd.ConfiguredTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/oleombruni/ASE_Lab/WeatherFromCityCA/test/results/TEST-org.netbeans.modules.compapp.catd.ConfiguredTest.xml crashfile=/var/folders/t0/yqn3dvwj62q43wj9vd6jqbx00000gn/T/junitvmwatcher6524055084588767911.properties propsfile=/var/folders/t0/yqn3dvwj62q43wj9vd6jqbx00000gn/T/junit7293424023504507003.properties
+sun.java.command=org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner org.netbeans.modules.compapp.catd.ConfiguredTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/oleombruni/ASE_Lab/WeatherFromCityCA/test/results/TEST-org.netbeans.modules.compapp.catd.ConfiguredTest.xml crashfile=/var/folders/t0/yqn3dvwj62q43wj9vd6jqbx00000gn/T/junitvmwatcher3845281620737644776.properties propsfile=/var/folders/t0/yqn3dvwj62q43wj9vd6jqbx00000gn/T/junit2015069650903189101.properties
 sun.java.launcher=SUN_STANDARD
 sun.jnu.encoding=UTF-8
 sun.management.compiler=HotSpot 64-Bit Tiered Compilers
@@ -402,9 +400,9 @@ user.name=oleombruni
 user.timezone=Europe/Rome
 Test TestPisa\Concurrent.properties Passed. Threads count Success: <1> Error: <0> Not completed: <0>
 ]]></system-out>
-  <system-err><![CDATA[Oct 23, 2017 6:45:51 PM org.netbeans.modules.editor.settings.storage.keybindings.KeyMapsStorage$KeyMapsReader startElement
+  <system-err><![CDATA[Oct 23, 2017 10:32:48 PM org.netbeans.modules.editor.settings.storage.keybindings.KeyMapsStorage$KeyMapsReader startElement
 WARNING: The keybinding 'A-MOUSE_WHEEL_UP' in Editors/Keybindings/NetBeans/Defaults/org-netbeans-modules-editor-keybindings.xml may not work correctly on Mac. Keybindings starting with Alt or Ctrl should be coded with latin capital letters 'O' or 'D' respectively. For details see org.openide.util.Utilities.stringToKey().
-Oct 23, 2017 6:45:51 PM org.netbeans.modules.editor.settings.storage.keybindings.KeyMapsStorage$KeyMapsReader startElement
+Oct 23, 2017 10:32:48 PM org.netbeans.modules.editor.settings.storage.keybindings.KeyMapsStorage$KeyMapsReader startElement
 WARNING: The keybinding 'A-MOUSE_WHEEL_DOWN' in Editors/Keybindings/NetBeans/Defaults/org-netbeans-modules-editor-keybindings.xml may not work correctly on Mac. Keybindings starting with Alt or Ctrl should be coded with latin capital letters 'O' or 'D' respectively. For details see org.openide.util.Utilities.stringToKey().
 ]]></system-err>
 </testsuite>

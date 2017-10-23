@@ -42,7 +42,7 @@
         <invoke name="InvokeIP2Geo" partnerLink="IP2Geo" operation="ResolveIP" xmlns:tns="http://ws.cdyne.com/" portType="tns:IP2GeoSoap" inputVariable="ResolveIPInput" outputVariable="ResolveIPOutput"/>
         <assign name="AssignOWM">
             <copy>
-                <from>concat($ResolveIPOutput.parameters/ns0:ResolveIPResult/ns0:City, ',', $ResolveIPOutput.parameters/ns0:ResolveIPResult/ns0:CountryCode)</from>
+                <from>concat($ResolveIPOutput.parameters/ns0:ResolveIPResult/ns0:City, ',', $ResolveIPOutput.parameters/ns0:ResolveIPResult/ns0:StateProvince, ',', $ResolveIPOutput.parameters/ns0:ResolveIPResult/ns0:CountryCode)</from>
                 <to variable="GetWeatherInput" sxnmp:nmProperty="org.glassfish.openesb.rest.params.q"/>
             </copy>
             <copy>

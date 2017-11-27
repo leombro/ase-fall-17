@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ "$#" = 0 ]; then
+if [ $# -eq 0 ]; then
 	/usr/games/fortune | /usr/games/cowthink
 else
-	/usr/games/cowthink $@
+	/usr/games/cowthink "$@"
 fi
 	

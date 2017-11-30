@@ -1,5 +1,5 @@
-# ase-fall-17
-Collection of homework for the Advanced Software Engineering course @ Unipi.
+# ase-fall-17: Lab of Advanced Software Engineering
+Collection of homework for the Advanced Software Engineering course, taught by prof. [Antonio Brogi](http://pages.di.unipi.it/brogi/) and dr. [Stefano Forti](http://pages.di.unipi.it/forti/) for the Master's Degree in Computer Science and Master's Degree in Computer Science and Networking of [University of Pisa](http://www.unipi.it).
 
 ## List of homework
 

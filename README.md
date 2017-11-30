@@ -6,7 +6,7 @@ Collection of homework for the Advanced Software Engineering course, taught by p
 Number | Languages/Frameworks/Tools | Description | Submitted | Passed
 ------ | -------------------------- | ----------- | --------- | ------
 **0** | Java | A calculator prototype written in Java and tested with JUnit. | ✓ | ✓
-**1** | Java, REST, Spring | A toy Doodle RESTful web service written in Java using the Spring framework. | ✓ | ✓
+**1** | Java, REST, Spring, Heroku | A toy Doodle RESTful web service written in Java using the Spring framework and deployed on Heroku. | ✓ | ✓
 **2** | XML, OpenESB, WSDL, BPEL, SOAP, REST | A web service that takes an IP address (of a server) as input and returns the current weather in the city in which the server is located, orchestrated from the [IP2Geo Web Service](https://ws.cdyne.com/ip2geo/ip2geo.asmx) and the [OpenWeatherMap](http://openweathermap.org) service with WS-BPEL using the [OpenESB](http://www.open-esb.net) framework. | ✓ | ✓
 **3** | XML, OpenESB, WSDL, BPEL, SOAP | A web service that takes an airport code (e.g. PSA) as input and returns the airport's full name and time zone, orchestrated with WS-BPEL (managing faults) from two [WebServiceX](http://www.webservicex.net/new/Home/Index) services using the OpenESB framework. | ✓ | ✓
 **4** | BPEL, workflow nets, WoPeD | Modeling of a WS-BPEL process using a workflow net, created with the [WoPeD](http://woped.dhbw-karlsruhe.de/woped/) tool. | ✓ | ?

@@ -18,7 +18,7 @@ public interface CalculatorIF {
 }
 ```
 
-Implement a prototype capable of performing all operations, also extending the unit tests (JUnit) provided by your customer (ed: given by the teacher) so to stress test subtraction and multiplication. Push the prototype code to your GitHub.
+Implement a prototype capable of performing all operations, also extending the unit tests (JUnit) provided by your customer (given by the teacher, ed.) so to stress test subtraction and multiplication. Push the prototype code to your GitHub.
 
  
 ### Learning outcomes

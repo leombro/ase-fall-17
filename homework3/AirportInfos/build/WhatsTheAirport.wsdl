@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WhatsTheAirport" targetNamespace="http://j2ee.netbeans.org/wsdl/AirportInfos/src/WhatsTheAirport"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://j2ee.netbeans.org/wsdl/AirportInfos/src/WhatsTheAirport" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <types/>
+    <message name="WhatsTheAirportOperationRequest">
+        <part name="AirportCode" type="xsd:string"/>
+    </message>
+    <message name="WhatsTheAirportOperationResponse">
+        <part name="AirportFullName" type="xsd:string"/>
+        <part name="TimeZone" type="xsd:string"/>
+    </message>
+    <message name="WhatsTheAirportUnknownCodeFault">
+        <part name="FaultInfo" type="xsd:string"/>
+    </message>
+    <message name="WhatsTheAirportUnknownCountryFault">
+        <part name="FaultInfo" type="xsd:string"/>
+        <part name="AirportFullName" type="xsd:string"/>
+    </message>
+    <portType name="WhatsTheAirportPortType">
+        <operation name="WhatsTheAirportOperation">
+            <input name="Input" message="tns:WhatsTheAirportOperationRequest"/>
+            <output name="Output" message="tns:WhatsTheAirportOperationResponse"/>
+            <fault name="UnknownCodeFault" message="tns:WhatsTheAirportUnknownCodeFault"/>
+            <fault name="UnknownCountryFault" message="tns:WhatsTheAirportUnknownCountryFault"/>
+        </operation>
+    </portType>
+    <binding name="WhatsTheAirportBinding" type="tns:WhatsTheAirportPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="WhatsTheAirportOperation">
+            <soap:operation/>
+            <input name="Input">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/AirportInfos/src/WhatsTheAirport"/>
+            </input>
+            <output name="Output">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/AirportInfos/src/WhatsTheAirport"/>
+            </output>
+            <fault name="UnknownCodeFault">
+                <soap:fault name="UnknownCodeFault" use="literal" namespace="http://j2ee.netbeans.org/wsdl/AirportInfos/src/WhatsTheAirport"/>
+            </fault>
+            <fault name="UnknownCountryFault">
+                <soap:fault name="UnknownCountryFault"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="WhatsTheAirportService">
+        <port name="WhatsTheAirportPort" binding="tns:WhatsTheAirportBinding">
+            <soap:address location="http://localhost:${HttpDefaultPort}/WhatsTheAirportService/WhatsTheAirportPort"/>
+        </port>
+    </service>
+    <plnk:partnerLinkType name="WhatsTheAirport">
+        <!-- A partner link type is automatically generated when a new port type is added. Partner link types are used by BPEL processes. 
+In a BPEL process, a partner link represents the interaction between the BPEL process and a partner service. Each partner link is associated with a partner link type.
+A partner link type characterizes the conversational relationship between two services. The partner link type can have one or two roles.-->
+        <plnk:role name="WhatsTheAirportPortTypeRole" portType="tns:WhatsTheAirportPortType"/>
+    </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<process
+    name="airportInfos"
+    targetNamespace="http://enterprise.netbeans.org/bpel/AirportInfos/airportInfos"
+    xmlns:tns="http://enterprise.netbeans.org/bpel/AirportInfos/airportInfos"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:sxt="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Trace" 
+    xmlns:sxed="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Editor2"
+    xmlns:sxat="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Attachment"
+    xmlns:sxeh="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/ErrorHandling" xmlns:ns0="http://www.webserviceX.NET" xmlns:ns1="http://j2ee.netbeans.org/wsdl/AirportInfos/src/WhatsTheAirport" xmlns:sxxf="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/XPathFunctions">
+    <import namespace="http://j2ee.netbeans.org/wsdl/AirportInfos/src/WhatsTheAirport" location="WhatsTheAirport.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/airport.asmxWrapper" location="airport.asmxWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://www.webserviceX.NET" location="http://www.webservicex.net/airport.asmx?WSDL" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/country.asmxWrapper" location="country.asmxWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://www.webserviceX.NET" location="http://www.webservicex.net/country.asmx?wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <partnerLinks>
+        <partnerLink name="AirportInformation" xmlns:tns="http://enterprise.netbeans.org/bpel/airport.asmxWrapper" partnerLinkType="tns:airportSoapLinkType" partnerRole="airportSoapRole"/>
+        <partnerLink name="Country" xmlns:tns="http://enterprise.netbeans.org/bpel/country.asmxWrapper" partnerLinkType="tns:countrySoapLinkType" partnerRole="countrySoapRole"/>
+        <partnerLink name="Client" xmlns:tns="http://j2ee.netbeans.org/wsdl/AirportInfos/src/WhatsTheAirport" partnerLinkType="tns:WhatsTheAirport" myRole="WhatsTheAirportPortTypeRole"/>
+    </partnerLinks>
+    <variables>
+        <variable name="ValidCountryNoGMT" type="xs:boolean"/>
+        <variable name="WhatsTheAirportOperationOutput" messageType="ns1:WhatsTheAirportOperationResponse"/>
+        <variable name="CountryOutput" type="xs:string"/>
+        <variable name="GetGMTbyCountryOutput" messageType="ns0:GetGMTbyCountrySoapOut"/>
+        <variable name="GetGMTbyCountryInput" messageType="ns0:GetGMTbyCountrySoapIn"/>
+        <variable name="UnknownCodeReply" messageType="ns1:WhatsTheAirportUnknownCodeFault"/>
+        <variable name="AirportOutput" type="xs:string"/>
+        <variable name="GetAirportInformationByAirportCodeOutput" xmlns:tns="http://www.webserviceX.NET" messageType="tns:getAirportInformationByAirportCodeSoapOut"/>
+        <variable name="GetAirportInformationByAirportCodeInput" xmlns:tns="http://www.webserviceX.NET" messageType="tns:getAirportInformationByAirportCodeSoapIn"/>
+        <variable name="WhatsTheAirportOperationInput" xmlns:tns="http://j2ee.netbeans.org/wsdl/AirportInfos/src/WhatsTheAirport" messageType="tns:WhatsTheAirportOperationRequest"/>
+        <variable name="UnknownCountryReply" messageType="ns1:WhatsTheAirportUnknownCountryFault"/>
+    </variables>
+    <faultHandlers>
+        <catch faultName="ns1:UnknownCodeFault" >
+            <sequence name="CatchUnknownCode">
+                <assign name="AssignAirportFault">
+                    <copy>
+                        <from>concat('No airport found for the specified airport code: ', $WhatsTheAirportOperationInput.AirportCode)</from>
+                        <to variable="UnknownCodeReply" part="FaultInfo"/>
+                    </copy>
+                </assign>
+                <reply name="ReplyAirportFault" partnerLink="Client" operation="WhatsTheAirportOperation" portType="ns1:WhatsTheAirportPortType" faultName="ns1:UnknownCodeFault" variable="UnknownCodeReply"/>
+            </sequence>
+        </catch>
+        <catch faultName="ns1:UnknownCountryFault">
+            <sequence name="CatchUnknownCountry">
+                <assign name="AssignCountryFault">
+                    <copy>
+                        <from variable="AirportOutput"/>
+                        <to variable="UnknownCountryReply" part="AirportFullName"/>
+                    </copy>
+                    <copy>
+                        <from>concat('Unknown country for the provided airport: ', $GetGMTbyCountryInput.parameters/ns0:CountryName)</from>
+                        <to variable="UnknownCountryReply" part="FaultInfo"/>
+                    </copy>
+                </assign>
+                <reply name="ReplyCountryFault" partnerLink="Client" operation="WhatsTheAirportOperation" portType="ns1:WhatsTheAirportPortType" faultName="ns1:UnknownCountryFault" variable="UnknownCountryReply"/>
+            </sequence>
+        </catch>
+    </faultHandlers>
+    <sequence>
+        <receive name="ReceiveClient" createInstance="yes" partnerLink="Client" operation="WhatsTheAirportOperation" xmlns:tns="http://j2ee.netbeans.org/wsdl/AirportInfos/src/WhatsTheAirport" portType="tns:WhatsTheAirportPortType" variable="WhatsTheAirportOperationInput"/>
+        <assign name="AssignInputAirport">
+            <copy>
+                <from variable="WhatsTheAirportOperationInput" part="AirportCode"/>
+                <to>$GetAirportInformationByAirportCodeInput.parameters/ns0:airportCode</to>
+            </copy>
+        </assign>
+        <invoke name="InvokeAirportInformation" partnerLink="AirportInformation" operation="getAirportInformationByAirportCode" xmlns:tns="http://www.webserviceX.NET" portType="tns:airportSoap" inputVariable="GetAirportInformationByAirportCodeInput" outputVariable="GetAirportInformationByAirportCodeOutput"/>
+        <assign name="ProcessAirportResponse">
+            <copy>
+                <from>substring-before(substring-after(string($GetAirportInformationByAirportCodeOutput.parameters/ns0:getAirportInformationByAirportCodeResult), '&lt;CityOrAirportName&gt;'), '&lt;/CityOrAirportName&gt;')</from>
+                <to variable="AirportOutput"/>
+            </copy>
+            <copy>
+                <from>substring-before(substring-after(string($GetAirportInformationByAirportCodeOutput.parameters/ns0:getAirportInformationByAirportCodeResult), '&lt;Country&gt;'), '&lt;/Country&gt;')</from>
+                <to>$GetGMTbyCountryInput.parameters/ns0:CountryName</to>
+            </copy>
+        </assign>
+        <if name="IfNoAirport">
+            <condition>0 = string-length($AirportOutput)</condition>
+            <throw name="ThrowAirportFault" faultName="ns1:UnknownCodeFault" />
+        </if>
+        <invoke name="InvokeCountry" partnerLink="Country" operation="GetGMTbyCountry" portType="ns0:countrySoap" inputVariable="GetGMTbyCountryInput" outputVariable="GetGMTbyCountryOutput"/>
+        <assign name="ProcessCountryOutput">
+            <copy>
+                <from>substring-before(substring-after(string($GetGMTbyCountryOutput.parameters/ns0:GetGMTbyCountryResult), '&lt;GMT&gt;'), '&lt;/GMT&gt;')</from>
+                <to variable="CountryOutput"/>
+            </copy>
+        </assign>
+        <if name="IfNoCountry">
+            <condition>string-length($CountryOutput) = 0</condition>
+            <sequence name="CheckIfNoGMT">
+                <assign name="CheckEmptyGMTTag">
+                    <copy>
+                        <from>contains(string($GetGMTbyCountryOutput.parameters/ns0:GetGMTbyCountryResult), '&lt;GMT /&gt;')</from>
+                        <to variable="ValidCountryNoGMT"/>
+                    </copy>
+                </assign>
+                <if name="IfNoGMTTag">
+                    <condition>not($ValidCountryNoGMT)</condition>
+                    <throw name="ThrowCountryFault" faultName="ns1:UnknownCountryFault" />
+                </if>
+            </sequence>
+        </if>
+        <assign name="AssignReply">
+            <copy>
+                <from variable="AirportOutput"/>
+                <to variable="WhatsTheAirportOperationOutput" part="AirportFullName"/>
+            </copy>
+            <copy>
+                <from variable="CountryOutput"/>
+                <to variable="WhatsTheAirportOperationOutput" part="TimeZone"/>
+            </copy>
+        </assign>
+        <reply name="ReplyClient" partnerLink="Client" operation="WhatsTheAirportOperation" portType="ns1:WhatsTheAirportPortType" variable="WhatsTheAirportOperationOutput"/>
+    </sequence>
+</process>

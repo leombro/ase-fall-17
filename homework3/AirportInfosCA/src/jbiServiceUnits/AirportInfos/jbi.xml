@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:ns0="http://enterprise.netbeans.org/bpel/AirportInfos/airportInfos" xmlns:ns1="http://www.webserviceX.NET" xmlns:ns2="http://j2ee.netbeans.org/wsdl/AirportInfos/src/WhatsTheAirport" xmlns:ns3="http://www.sun.com/jbi/descriptor/service-unit" version="1.0">
+    <services binding-component="false">
+        <provides endpoint-name="WhatsTheAirportPortTypeRole_myRole" interface-name="ns2:WhatsTheAirportPortType" service-name="ns0:Client">
+            <ns3:display-name>Client</ns3:display-name>
+            <ns3:process-name>airportInfos</ns3:process-name>
+            <ns3:file-path>airportInfos.bpel</ns3:file-path>
+        </provides>
+        <consumes endpoint-name="airportSoapRole_partnerRole" interface-name="ns1:airportSoap" service-name="ns0:AirportInformation">
+            <ns3:display-name>AirportInformation</ns3:display-name>
+            <ns3:process-name>airportInfos</ns3:process-name>
+            <ns3:file-path>airportInfos.bpel</ns3:file-path>
+        </consumes>
+        <consumes endpoint-name="countrySoapRole_partnerRole" interface-name="ns1:countrySoap" service-name="ns0:Country">
+            <ns3:display-name>Country</ns3:display-name>
+            <ns3:process-name>airportInfos</ns3:process-name>
+            <ns3:file-path>airportInfos.bpel</ns3:file-path>
+        </consumes>
+    </services>
+</jbi>

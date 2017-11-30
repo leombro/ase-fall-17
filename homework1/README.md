@@ -36,7 +36,7 @@ I decided to treat the two classes provided by the teachers (`doodle.java` and `
 	* **Solution**: Check that the Spring-generated `Doodle` object has both the `title` and `options` fields non-`null`.
 1. The `PUT /doodles/{id}/vote` operation can modify an already-existing vote. (It shouldn’t.)
 	* **Solution**: Check that the name indicated in the JSON body request hasn’t voted yet.
-1. When performing `PUT /doodles/{id}/vote` with a JSON body request that doesn’t contain the `name` field, the app inserts a vote anyway (with `name = null`); the `addVote(Vote vote)` method doesn’t check wheter `vote.getName()` returns `null` (`doodle.java`, line 49).
+1. When performing `PUT /doodles/{id}/vote` with a JSON body request that doesn’t contain the `name` field, the app inserts a vote anyway (with `name = null`); the `addVote(Vote vote)` method doesn’t check whether `vote.getName()` returns `null` (`doodle.java`, line 49).
 	* **Solution**: Check that the `name` field is present in the JSON body request.
 1. The `POST /doodles/{id}/vote/{name}` operation can insert a new vote. (It shouldn’t.)
 	* **Solution**: Check that the name indicated in the JSON body request has already voted.

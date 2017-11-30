@@ -23,7 +23,7 @@ Implement a prototype capable of performing all operations, also extending the u
  
 ### Learning outcomes
 
-✓ Revise basic programming constructs with Java. 
-✓ Revise command-line usage. 
-✓ Get familiar with IDE programming and unit testing (JUnit). 
-✓ Get familiar with GitHub and learn some advanced features.  
+- [x] Revise basic programming constructs with Java. 
+- [x] Revise command-line usage. 
+- [x] Get familiar with IDE programming and unit testing (JUnit). 
+- [x] Get familiar with GitHub and learn some advanced features.  
